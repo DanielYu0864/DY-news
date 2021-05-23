@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
 * {
   margin: 0;
   padding: 0;
@@ -6,4 +7,9 @@
 
 .main-container {
   margin-top: 3vh;
+}
+
+.navbar-brand {
+  font-family: 'Monoton', cursive;
+  font-size: 50px;
 }

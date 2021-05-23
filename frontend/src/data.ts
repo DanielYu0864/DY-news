@@ -285,3 +285,48 @@ export const news_data = {
     },
   ],
 };
+
+export const weather_data = {
+  coord: {
+    lon: -122.3321,
+    lat: 47.6062,
+  },
+  weather: [
+    {
+      id: 804,
+      main: 'Clouds',
+      description: 'overcast clouds',
+      icon: '04d',
+    },
+  ],
+  base: 'stations',
+  main: {
+    temp: 286.93,
+    feels_like: 286.43,
+    temp_min: 285.38,
+    temp_max: 288.76,
+    pressure: 1018,
+    humidity: 79,
+  },
+  visibility: 10000,
+  wind: {
+    speed: 2.68,
+    deg: 227,
+    gust: 4.92,
+  },
+  clouds: {
+    all: 90,
+  },
+  dt: 1621798223,
+  sys: {
+    type: 2,
+    id: 2004026,
+    country: 'US',
+    sunrise: 1621772565,
+    sunset: 1621828188,
+  },
+  timezone: -25200,
+  id: 5809844,
+  name: 'Seattle',
+  cod: 200,
+};

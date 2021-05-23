@@ -1,10 +1,30 @@
 import React from 'react';
 import { Carousel, Image } from 'react-bootstrap';
 
-const NewsCarousels: React.FC = () => {
+type CardProps = {
+  articles?: any;
+};
+
+const NewsCarousels: React.FC<CardProps> = ({ articles }) => {
+  console.log(articles);
+
   return (
     <Carousel className='h-100'>
-      <Carousel.Item className='h-100'>
+      {articles.map((article: any) => (
+        <Carousel.Item className='h-100'>
+          <Image
+            className='d-block w-100 h-100'
+            src={article.urlToImage}
+            alt={article.title}
+          />
+          <Carousel.Caption className='pb-1'>
+            {/* <h3>{article.title}</h3> */}
+            <p>{article.title}</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+      ))}
+
+      {/* <Carousel.Item className='h-100'>
         <Image
           className='d-block w-100 h-100'
           src='https://www.usglc.org/media/2016/09/800x400.png'
@@ -40,7 +60,7 @@ const NewsCarousels: React.FC = () => {
             Praesent commodo cursus magna, vel scelerisque nisl consectetur.
           </p>
         </Carousel.Caption>
-      </Carousel.Item>
+      </Carousel.Item> */}
     </Carousel>
   );
 };

@@ -4,10 +4,10 @@ import React from 'react';
 
 const Header: React.FC = () => {
   return (
-    <Nav className='navbar navbar-expand-lg navbar-dark bg-primary'>
+    <Nav className='navbar navbar-expand-lg navbar-dark bg-primary p-0'>
       <Container className='container-fluid'>
         <a className='navbar-brand' href='/'>
-          Navbar
+          DY.
         </a>
         <button
           className='navbar-toggler'
@@ -24,25 +24,31 @@ const Header: React.FC = () => {
         <div className='collapse navbar-collapse' id='navbarColor01'>
           <ul className='navbar-nav me-auto'>
             <li className='nav-item'>
+              <a className='nav-link active' href='#'>
+                Hot
+              </a>
+            </li>
+            {/* <li className='nav-item'>
               <a className='nav-link' href='#'>
-                Home
+                Business
               </a>
             </li>
             <li className='nav-item'>
               <a className='nav-link' href='#'>
-                Features
+                Science
               </a>
             </li>
             <li className='nav-item'>
               <a className='nav-link' href='#'>
-                Pricing
+                Technology
               </a>
             </li>
             <li className='nav-item'>
               <a className='nav-link' href='#'>
-                About
+                Health
               </a>
-            </li>
+            </li> */}
+
             {/* <li className='nav-item dropdown'>
               <a
                 className='nav-link dropdown-toggle'

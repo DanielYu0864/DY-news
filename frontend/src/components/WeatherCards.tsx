@@ -1,21 +1,21 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
+import { weather_data } from '../data';
 
 const WeatherCards: React.FC = () => {
+  const { weather } = weather_data;
+
+  const weatherInfo = weather[0];
+
   return (
     <Card className='text-white bg-primary h-100'>
-      <Card.Header>Header</Card.Header>
       <Card.Body>
-        <Card.Title>Primary card title</Card.Title>
-        <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content. Some quick example text to build on the
-          card title and make up the bulk of the card's content.Some quick
-          example text to build on the card title and make up the bulk of the
-          card's content.Some quick example text to build on the card title and
-          make up the bulk of the card's content. Some quick example text to
-          build on the card title and make up the bulk of the card's content.
-        </Card.Text>
+        <Card.Title>{weatherInfo.main}</Card.Title>
+        <Card.Img
+          className='w-40'
+          src={`http://openweathermap.org/img/wn/${weatherInfo.icon}@2x.png`}
+        />
+        <Card.Text>{weatherInfo.description}</Card.Text>
       </Card.Body>
     </Card>
   );
