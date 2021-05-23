@@ -1,17 +1,23 @@
 import React from 'react';
+import { Card } from 'react-bootstrap';
 
 const WeatherCards: React.FC = () => {
   return (
-    <div className='card text-white bg-primary mb-4'>
-      <div className='card-header'>Header</div>
-      <div className='card-body'>
-        <h4 className='card-title'>Primary card title</h4>
-        <p className='card-text'>
+    <Card className='text-white bg-primary h-100'>
+      <Card.Header>Header</Card.Header>
+      <Card.Body>
+        <Card.Title>Primary card title</Card.Title>
+        <Card.Text>
           Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </p>
-      </div>
-    </div>
+          bulk of the card's content. Some quick example text to build on the
+          card title and make up the bulk of the card's content.Some quick
+          example text to build on the card title and make up the bulk of the
+          card's content.Some quick example text to build on the card title and
+          make up the bulk of the card's content. Some quick example text to
+          build on the card title and make up the bulk of the card's content.
+        </Card.Text>
+      </Card.Body>
+    </Card>
   );
 };
 
