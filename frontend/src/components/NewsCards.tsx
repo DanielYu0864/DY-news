@@ -6,7 +6,15 @@ type CardProps = {
 };
 
 const NewsCards: React.FC<CardProps> = ({ article }) => {
-  console.log(article);
+  const toLocalTime = (publichAt: string) => {
+    const date = new Date(publichAt);
+
+    // console.log(date.toString());
+
+    return date.toString().split('GMT')[0];
+  };
+
+  // console.log(article);
   return (
     <Card className='mb-3'>
       <Card.Body>
@@ -27,12 +35,12 @@ const NewsCards: React.FC<CardProps> = ({ article }) => {
         <a href={article.url} className='card-link'>
           News link
         </a>
-        <a href='#' className='card-link'>
+        {/* <a href='#' className='card-link'>
           Read more
-        </a>
+        </a> */}
       </Card.Body>
       <Card.Footer className='card-footer text-muted'>
-        {article.publishedAt.split('T')[0].split('-').join('/')}
+        {toLocalTime(article.publishedAt)}
       </Card.Footer>
     </Card>
   );
