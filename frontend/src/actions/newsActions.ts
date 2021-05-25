@@ -29,6 +29,7 @@ interface ProcessEnv {
 export const listNews = () => async (dispatch: Dispatch<Action>) => {
   try {
     dispatch({ type: NewsListAction.NEWS_LIST_REQUEST });
+    //* get api key from .env
     const apiKey: string = process.env.REACT_APP_NEWS_API as string;
     const newsAPI = new NewsAPI(apiKey);
 

@@ -26,20 +26,20 @@ import { listNews } from '../actions/newsActions';
 // todo: Firebase: host on firebase
 const MainPage: React.FC = () => {
   //* get news from redux******************************************************************************
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  const newsList = useSelector((state: any) => state.news);
+  // const newsList = useSelector((state: any) => state.news);
 
-  const { loading, error, data } = newsList;
-  console.log(data);
-  useEffect(() => {
-    dispatch(listNews());
-  }, [dispatch]);
-  const articles = data;
+  // const { loading, error, data } = newsList;
+  // console.log(data);
+  // useEffect(() => {
+  //   dispatch(listNews());
+  // }, [dispatch]);
+  // const articles = data;
   //******************************************************************************************************
 
-  // const { articles } = news_data;
-  // console.log(articles);
+  const { articles } = news_data;
+  console.log(articles);
   return (
     <Container className='main-container'>
       <Row className='mb-5 align-items-center'>
