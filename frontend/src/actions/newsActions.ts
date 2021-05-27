@@ -1,32 +1,16 @@
 import axios from 'axios';
 import { Dispatch } from 'redux';
 import { NewsListAction } from '../constants/newsConstants';
+import { NewsActionType } from '../api/newsapiActionType';
 import { news_data } from '../data';
 import NewsAPI from 'ts-newsapi';
 
-interface NewsListRequest {
-  type: NewsListAction.NEWS_LIST_REQUEST;
-}
-interface NewsListRequestSuccess {
-  type: NewsListAction.NEWS_LIST_REQUEST_SUCCESS;
-  payload: any;
-}
-interface NewsListRequestFail {
-  type: NewsListAction.NEWS_LIST_REQUEST_FAIL;
-  payload: string;
-}
+// interface ProcessEnv {
+//   NODE_ENV: 'development' | 'production' | 'test';
+//   REACT_APP_NEWS_API: string;
+// }
 
-export type Action =
-  | NewsListRequest
-  | NewsListRequestSuccess
-  | NewsListRequestFail;
-
-interface ProcessEnv {
-  NODE_ENV: 'development' | 'production' | 'test';
-  REACT_APP_NEWS_API: string;
-}
-
-export const listNews = () => async (dispatch: Dispatch<Action>) => {
+export const listNews = () => async (dispatch: Dispatch<NewsActionType>) => {
   try {
     dispatch({ type: NewsListAction.NEWS_LIST_REQUEST });
     //* get api key from .env
@@ -40,7 +24,7 @@ export const listNews = () => async (dispatch: Dispatch<Action>) => {
       page: 1,
     });
 
-    console.log(topHeadlines);
+    // console.log(topHeadlines);
     const { articles } = topHeadlines;
 
     // console.log(articles);

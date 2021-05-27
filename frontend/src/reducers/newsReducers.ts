@@ -1,7 +1,7 @@
 import { NewsListAction } from '../constants/newsConstants';
-import { Action } from '../actions/newsActions';
+import { NewsActionType } from '../api/newsapiActionType';
 
-interface RepositoriesState {
+interface newsState {
   loading: boolean;
   error: string | null;
   data: string[];
@@ -15,8 +15,8 @@ const initialState = {
 };
 
 export const newsReducer = (
-  state: RepositoriesState = initialState,
-  action: Action
+  state: newsState = initialState,
+  action: NewsActionType
 ) => {
   switch (action.type) {
     case NewsListAction.NEWS_LIST_REQUEST:

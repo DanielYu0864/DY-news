@@ -32,9 +32,9 @@ const NewsCards: React.FC<CardProps> = ({ article }) => {
         <Card.Text>{article.description}</Card.Text>
       </Card.Body>
       <Card.Body>
-        <a href={article.url} className='card-link'>
+        <Card.Link href={article.url} className='card-link'>
           News link
-        </a>
+        </Card.Link>
         {/* <a href='#' className='card-link'>
           Read more
         </a> */}

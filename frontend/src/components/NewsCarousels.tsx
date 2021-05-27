@@ -6,20 +6,21 @@ type CardProps = {
 };
 
 const NewsCarousels: React.FC<CardProps> = ({ articles }) => {
-  console.log(articles);
+  // console.log(articles);
 
   return (
     <Carousel className='h-100'>
       {articles.map((article: any) => (
-        <Carousel.Item className='h-100'>
+        <Carousel.Item className='h-100 overflow-hidden' key={article.title}>
           <Image
-            className='d-block w-100 h-100'
+            className='d-block w-100'
+            style={{ maxHeight: '340px', objectFit: 'cover' }}
             src={article.urlToImage}
             alt={article.title}
           />
           <Carousel.Caption className='pb-1'>
             {/* <h3>{article.title}</h3> */}
-            <p>{article.title}</p>
+            <p style={{ fontSize: '0.9rem' }}>{article.title}</p>
           </Carousel.Caption>
         </Carousel.Item>
       ))}
