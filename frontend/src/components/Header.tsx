@@ -1,15 +1,16 @@
-import { LinkContainer } from 'react-router-bootstrap'; // = to Link from 'react-router-dom'
+// import { LinkContainer } from 'react-router-bootstrap'; // = to Link from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
 import React from 'react';
 
 const Header: React.FC = () => {
   return (
-    <Nav className='navbar navbar-expand-lg navbar-dark bg-primary p-0'>
+    <Navbar className='navbar navbar-expand-lg navbar-dark bg-primary p-0'>
       <Container className='container-fluid'>
-        <a className='navbar-brand' href='/'>
+        <Nav.Link className='navbar-brand' href='/'>
           DY.
-        </a>
-        <button
+        </Nav.Link>
+        {/* <button
           className='navbar-toggler'
           type='button'
           data-bs-toggle='collapse'
@@ -19,15 +20,17 @@ const Header: React.FC = () => {
           aria-label='Toggle navigation'
         >
           <span className='navbar-toggler-icon'></span>
-        </button>
+        </button> */}
 
         <div className='collapse navbar-collapse' id='navbarColor01'>
-          <ul className='navbar-nav me-auto'>
-            <li className='nav-item'>
-              <a className='nav-link active' href='#'>
-                Hot
-              </a>
-            </li>
+          <Nav className='navbar-nav me-auto'>
+            <Link to='/'>
+              <Nav.Item className='nav-link'>US Hot</Nav.Item>
+            </Link>
+            <Link to='/twnews'>
+              <Nav.Item className='nav-link'>TW Hot</Nav.Item>
+            </Link>
+
             {/* <li className='nav-item'>
               <a className='nav-link' href='#'>
                 Business
@@ -76,10 +79,10 @@ const Header: React.FC = () => {
                 </a>
               </div>
             </li> */}
-          </ul>
+          </Nav>
         </div>
       </Container>
-    </Nav>
+    </Navbar>
   );
 };
 

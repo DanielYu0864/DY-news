@@ -10,33 +10,35 @@ import NewsAPI from 'ts-newsapi';
 //   REACT_APP_NEWS_API: string;
 // }
 
-export const listNews = () => async (dispatch: Dispatch<NewsActionType>) => {
-  try {
-    dispatch({ type: NewsListAction.NEWS_LIST_REQUEST });
-    //* get api key from .env
-    const apiKey: string = process.env.REACT_APP_NEWS_API as string;
-    const newsAPI = new NewsAPI(apiKey);
+export const listNews =
+  (country: any = 'us') =>
+  async (dispatch: Dispatch<NewsActionType>) => {
+    try {
+      dispatch({ type: NewsListAction.NEWS_LIST_REQUEST });
+      //* get api key from .env
+      const apiKey: string = process.env.REACT_APP_NEWS_API as string;
+      const newsAPI = new NewsAPI(apiKey);
 
-    const topHeadlines = await newsAPI.getTopHeadlines({
-      country: 'us',
-      category: 'business',
-      pageSize: 40,
-      page: 1,
-    });
+      const topHeadlines = await newsAPI.getTopHeadlines({
+        country: country,
+        category: 'business',
+        pageSize: 40,
+        page: 1,
+      });
 
-    // console.log(topHeadlines);
-    const { articles } = topHeadlines;
+      // console.log(topHeadlines);
+      const { articles } = topHeadlines;
 
-    // console.log(articles);
+      // console.log(articles);
 
-    dispatch({
-      type: NewsListAction.NEWS_LIST_REQUEST_SUCCESS,
-      payload: articles,
-    });
-  } catch (error) {
-    dispatch({
-      type: NewsListAction.NEWS_LIST_REQUEST_FAIL,
-      payload: error.message,
-    });
-  }
-};
+      dispatch({
+        type: NewsListAction.NEWS_LIST_REQUEST_SUCCESS,
+        payload: articles,
+      });
+    } catch (error) {
+      dispatch({
+        type: NewsListAction.NEWS_LIST_REQUEST_FAIL,
+        payload: error.message,
+      });
+    }
+  };

@@ -13,22 +13,8 @@ import NewsCarousels from '../components/NewsCarousels';
 import WeatherCards from '../components/WeatherCards';
 import { news_data } from '../data';
 import { listNews } from '../actions/newsActions';
-// // todo: CSS: try to make every card hight be the same
-// // todo: HTML: change all the html into jsx or tsx (ex: div -> Card)
-// todo: tw news page
-// todo: component: news detaill page (or pop up box)
-// // todo: get the news form data.ts in to Main page
-//// todo: styling weather cards:
-// // todo: craete weather constants, weather reducer, weather aciton, and add into store
-// // todo: openWeatherMap api: fetch weather info into weather cards
-// // todo: OPEN_WEATHER_API: try to stall/fetch weather info into weather-cards
-// // todo: NEWS_API: try to stall/fetch news into news-cards, new carousels
-// todo: footer
-// todo: BACKEND: does it need to have backend to call news-api?
-// todo: Firebase: host on firebase
 
-// todo: issues: LinkContainer does not works in header
-const MainPage: React.FC = () => {
+const TWNewsPage: React.FC = () => {
   //* get news from redux******************************************************************************
   const dispatch = useDispatch();
 
@@ -37,7 +23,7 @@ const MainPage: React.FC = () => {
   const { loading, error, data } = newsList;
   // console.log(data);
   useEffect(() => {
-    dispatch(listNews());
+    dispatch(listNews('tw'));
   }, []);
   const articles = data;
   //******************************************************************************************************
@@ -50,7 +36,7 @@ const MainPage: React.FC = () => {
     <Container className='main-container'>
       <Row className='mb-5 align-items-center'>
         <Col xs={12} sm={12} md={4}>
-          <WeatherCards city='Seattle' />
+          <WeatherCards city='Kaohsiung' />
         </Col>
         <Col xs={12} sm={12} md={8}>
           {!loading && !error && (
@@ -67,7 +53,7 @@ const MainPage: React.FC = () => {
             if (i > 2 && article.description) {
               return (
                 <Col className='h-100' key={i} xs={12} md={6} lg={4}>
-                  <NewsCards article={article} key={i} />
+                  <NewsCards article={article} key={i} language='tw' />
                 </Col>
               );
             }
@@ -77,4 +63,4 @@ const MainPage: React.FC = () => {
   );
 };
 
-export default MainPage;
+export default TWNewsPage;

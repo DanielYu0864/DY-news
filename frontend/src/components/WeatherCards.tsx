@@ -5,11 +5,15 @@ import { Card, Image, InputGroup, FormControl, Button } from 'react-bootstrap';
 import { weather_data } from '../data';
 import { objectWeather } from '../actions/weatherActions';
 
-const WeatherCards: React.FC = () => {
-  const dispatch = useDispatch();
+interface weatherProps {
+  city?: string;
+}
 
+const WeatherCards: React.FC<weatherProps> = ({ city }) => {
+  const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [cityInput, setCityInput] = useState<string>('');
+  const [deg, setDeg] = useState('K');
 
   const data = useSelector((state: any) => state.weather);
   const { loading, error, weatherData } = data;
@@ -21,6 +25,15 @@ const WeatherCards: React.FC = () => {
   const kelvinToFahrenheit = (kelvin: number) => {
     const fahrenheit = Math.round(((kelvin - 273.15) * 9) / 5 + 32);
     return fahrenheit;
+  };
+
+  const kelvinToCOrF = (kelvin: number, deg: string) => {
+    if (deg == 'C') {
+      return kelvinToCelcius(kelvin);
+    }
+    if (deg == 'F') {
+      return kelvinToFahrenheit(kelvin);
+    }
   };
 
   const cityInputChangeHandler = (e: any) => {
@@ -35,22 +48,27 @@ const WeatherCards: React.FC = () => {
 
   useEffect(() => {
     console.log('re-render');
-    dispatch(objectWeather('Seattle'));
+    dispatch(objectWeather(city));
     setIsLoading(false);
+    if (city == 'Kaohsiung') {
+      setDeg('C');
+    } else {
+      setDeg('F');
+    }
   }, []);
 
-  // console.log(weatherData);
-  // const weatherData = weather_data;
-
   if (loading || error) {
-    console.log(loading);
-    console.log(error);
+    // console.log(loading);
+    // console.log(error);
     return <div>Loading..</div>;
   }
 
   if (isLoading) {
     return <div>Loading...</div>;
   }
+
+  // console.log(weatherData);
+  // const weatherData = weather_data;
   return (
     <Card className='text-white bg-primary h-100'>
       <InputGroup className='mb-3'>
@@ -81,13 +99,12 @@ const WeatherCards: React.FC = () => {
         >
           <ul className='mb-0'>
             <Card.Text style={{ fontSize: '2.5rem' }} className='mb-0'>
-              {kelvinToFahrenheit(weatherData?.main.temp)}&deg;F
+              {kelvinToCOrF(weatherData?.main.temp, deg)}&deg;{deg}
             </Card.Text>
             <Card.Text className='mb-0'>
-              Height:{' '}
-              <span>{kelvinToFahrenheit(weatherData?.main.temp_max)}</span>
+              High: <span>{kelvinToCOrF(weatherData?.main.temp_max, deg)}</span>
               &deg;/ Low:{' '}
-              <span>{kelvinToFahrenheit(weatherData?.main.temp_min)}</span>&deg;
+              <span>{kelvinToCOrF(weatherData?.main.temp_min, deg)}</span>&deg;
             </Card.Text>
             <Card.Text className='mb-0'>
               <i className='water-drip fas fa-tint'></i> Humidity:{' '}

@@ -3,11 +3,12 @@ import { Container, Card } from 'react-bootstrap';
 
 type CardProps = {
   article?: any;
+  language?: string;
 };
 
-const NewsCards: React.FC<CardProps> = ({ article }) => {
-  const toLocalTime = (publichAt: string) => {
-    const date = new Date(publichAt);
+const NewsCards: React.FC<CardProps> = ({ article, language }) => {
+  const toLocalTime = (publictAt: string) => {
+    const date = new Date(publictAt);
 
     // console.log(date.toString());
 
@@ -33,7 +34,8 @@ const NewsCards: React.FC<CardProps> = ({ article }) => {
       </Card.Body>
       <Card.Body>
         <Card.Link href={article.url} className='card-link'>
-          News link
+          <i className='fas fa-newspaper'></i>{' '}
+          {language == 'tw' ? '完整報導' : 'News link'}
         </Card.Link>
         {/* <a href='#' className='card-link'>
           Read more
