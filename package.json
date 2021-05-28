@@ -7,6 +7,7 @@
     "test": "test"
   },
   "scripts": {
+    "start": "npm start --prefix frontend",
     "test": "echo \"Error: no test specified\" && exit 1",
     "client": "npm start --prefix frontend"
   },
