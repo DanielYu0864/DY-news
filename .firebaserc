@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "default": "dy-news",
+    "dev": "dy-news"
+  }
+}
