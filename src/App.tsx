@@ -12,7 +12,8 @@ function App() {
     <Router>
       <Header />
       <main>
-        <Route path='/twnews' component={TWNewsPage} exact />
+        <Route path='/twnews' component={TWNewsPage} />
+        <Route path='/DY-news' component={MainPage} />
         <Route path='/' component={MainPage} exact />
       </main>
       <Footer />

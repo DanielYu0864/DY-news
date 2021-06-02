@@ -9,7 +9,7 @@ interface NewsListRequestSuccess {
 }
 interface NewsListRequestFail {
   type: NewsListAction.NEWS_LIST_REQUEST_FAIL;
-  payload: string;
+  payload: any;
 }
 
 export type NewsActionType =

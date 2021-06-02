@@ -10,9 +10,9 @@ export const objectWeather =
     try {
       dispatch({ type: WeatherAction.WEATHER_REQUEST });
       //* get api key from .env
-      const apiKey: string = process.env.REACT_APP_OPENWEATHERMAP_API as string;
+      const dyApiKey: string = process.env.REACT_APP_DY_API as string;
       const { data } = await axios.get(
-        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`
+        `https://dy-news-api.herokuapp.com/api/key=${dyApiKey}/weather/${city}`
       );
 
       dispatch({
