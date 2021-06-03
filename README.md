@@ -4,13 +4,18 @@
 
 ![main_page](./image/us-hot-screenshot.png)
 
+#### On Phone
+
+![phonescreen](./image/phonescreenshot.png)
+
 ## Description
 
 An app that you can read the US and Taiwan hottest & latest news at the same time
 
-### On Phone
+#### Project Deploy
 
-![phonescreen](./image/phonescreenshot.png)
+- Deploy frontend on Github Page: https://danielyu0864.github.io/DY-news/
+- Deploy backend server on Heroku: https://github.com/DanielYu0864/dy-news-server
 
 ## Languages
 
