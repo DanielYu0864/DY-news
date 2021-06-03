@@ -15,7 +15,7 @@ import { news_data } from '../data';
 import { listNews } from '../actions/newsActions';
 // // todo: CSS: try to make every card hight be the same
 // // todo: HTML: change all the html into jsx or tsx (ex: div -> Card)
-// todo: tw news page
+// // todo: tw news page
 // todo: component: news detaill page (or pop up box)
 // // todo: get the news form data.ts in to Main page
 //// todo: styling weather cards:
@@ -23,9 +23,10 @@ import { listNews } from '../actions/newsActions';
 // // todo: openWeatherMap api: fetch weather info into weather cards
 // // todo: OPEN_WEATHER_API: try to stall/fetch weather info into weather-cards
 // // todo: NEWS_API: try to stall/fetch news into news-cards, new carousels
-// todo: footer
-// todo: BACKEND: does it need to have backend to call news-api?
+// // todo: footer
+// // todo: BACKEND: does it need to have backend to call news-api?
 // todo: Firebase: host on firebase
+// todo: readme file
 
 // todo: issues: LinkContainer does not works in header
 const MainPage: React.FC = () => {

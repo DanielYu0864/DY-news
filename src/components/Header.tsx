@@ -2,8 +2,15 @@
 import { Link } from 'react-router-dom';
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
 import React from 'react';
+import { RouteComponentProps, useLocation } from 'react-router-dom';
+
+type HeaderProps = {
+  location?: any;
+};
 
 const Header: React.FC = () => {
+  const location = useLocation();
+  console.log(location.pathname);
   return (
     <Navbar className='navbar navbar-expand-lg navbar-dark bg-primary p-0'>
       <Container className='container-fluid'>
@@ -23,7 +30,27 @@ const Header: React.FC = () => {
         </button> */}
 
         <div className='collapse navbar-collapse' id='navbarColor01'>
-          <Nav className='navbar-nav me-auto'>
+          {location.pathname === '/twnews' ? (
+            <Nav className='navbar-nav me-auto' activeKey={location.pathname}>
+              <Link to='/'>
+                <Nav.Item className='nav-link'>US Hot</Nav.Item>
+              </Link>
+              <Link to='/twnews'>
+                <Nav.Item className='nav-link active'>TW Hot</Nav.Item>
+              </Link>
+            </Nav>
+          ) : (
+            <Nav className='navbar-nav me-auto' activeKey={location.pathname}>
+              <Link to='/'>
+                <Nav.Item className='nav-link active'>US Hot</Nav.Item>
+              </Link>
+              <Link to='/twnews'>
+                <Nav.Item className='nav-link '>TW Hot</Nav.Item>
+              </Link>
+            </Nav>
+          )}
+
+          {/* <Nav className='navbar-nav me-auto' activeKey={location.pathname}>
             <Link to='/'>
               <Nav.Item className='nav-link'>US Hot</Nav.Item>
             </Link>
@@ -31,7 +58,7 @@ const Header: React.FC = () => {
               <Nav.Item className='nav-link'>TW Hot</Nav.Item>
             </Link>
 
-            {/* <li className='nav-item'>
+            <li className='nav-item'>
               <a className='nav-link' href='#'>
                 Business
               </a>
@@ -50,9 +77,9 @@ const Header: React.FC = () => {
               <a className='nav-link' href='#'>
                 Health
               </a>
-            </li> */}
+            </li>
 
-            {/* <li className='nav-item dropdown'>
+            <li className='nav-item dropdown'>
               <a
                 className='nav-link dropdown-toggle'
                 data-bs-toggle='dropdown'
@@ -78,8 +105,8 @@ const Header: React.FC = () => {
                   Separated link
                 </a>
               </div>
-            </li> */}
-          </Nav>
+            </li>
+          </Nav> */}
         </div>
       </Container>
     </Navbar>
