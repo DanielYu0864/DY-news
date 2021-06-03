@@ -19,7 +19,7 @@ const NewsCards: React.FC<CardProps> = ({ article, language }) => {
   return (
     <Card className='mb-3'>
       <Card.Body>
-        <Card.Title>{article.title}</Card.Title>
+        <Card.Title style={{ fontWeight: 700 }}>{article.title}</Card.Title>
         <Card.Subtitle className='text-muted'>{article.author}</Card.Subtitle>
       </Card.Body>
       <Card.Img
@@ -30,7 +30,7 @@ const NewsCards: React.FC<CardProps> = ({ article, language }) => {
         }
       />
       <Card.Body>
-        <Card.Text>{article.description}</Card.Text>
+        <Card.Text style={{ fontWeight: 500 }}>{article.description}</Card.Text>
       </Card.Body>
       <Card.Body>
         <Card.Link href={article.url} className='card-link'>
