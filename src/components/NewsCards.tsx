@@ -41,7 +41,10 @@ const NewsCards: React.FC<CardProps> = ({ article, language }) => {
           Read more
         </a> */}
       </Card.Body>
-      <Card.Footer className='card-footer text-muted'>
+      <Card.Footer
+        className='card-footer text-muted'
+        style={{ fontWeight: 500 }}
+      >
         {toLocalTime(article.publishedAt)}
       </Card.Footer>
     </Card>

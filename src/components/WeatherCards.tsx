@@ -46,6 +46,14 @@ const WeatherCards: React.FC<weatherProps> = ({ city }) => {
     dispatch(objectWeather(cityInput));
   };
 
+  const degreeChangeFtoC = () => {
+    if (deg === 'C') {
+      setDeg('F');
+    } else {
+      setDeg('C');
+    }
+  };
+
   useEffect(() => {
     console.log('re-render');
     dispatch(objectWeather(city));
@@ -88,7 +96,7 @@ const WeatherCards: React.FC<weatherProps> = ({ city }) => {
           </Button>
         </InputGroup.Append>
       </InputGroup>
-      <Card.Header>{weatherData?.name} Today's Weather:</Card.Header>
+      <Card.Header>{weatherData?.name} Today's Weather</Card.Header>
       <Card.Body className='w-100'>
         <Card.Title style={{ fontSize: '1.6rem' }} className='text-center'>
           {weatherData?.weather[0].main}
@@ -97,6 +105,29 @@ const WeatherCards: React.FC<weatherProps> = ({ city }) => {
           className='d-flex justify-content-around align-items-center p-0'
           style={{ fontSize: '0.5rem' }}
         >
+          <Card.Body className='mid'>
+            <label className='rocker rocker-small'>
+              {deg === 'F' ? (
+                <input
+                  onClick={(e) => {
+                    degreeChangeFtoC();
+                  }}
+                  type='checkbox'
+                  defaultChecked
+                />
+              ) : (
+                <input
+                  onClick={(e) => {
+                    degreeChangeFtoC();
+                  }}
+                  type='checkbox'
+                />
+              )}
+
+              <span className='switch-left'>F</span>
+              <span className='switch-right'>C</span>
+            </label>
+          </Card.Body>
           <ul className='mb-0'>
             <Card.Text style={{ fontSize: '2.5rem' }} className='mb-0'>
               {kelvinToCOrF(weatherData?.main.temp, deg)}&deg;{deg}
