@@ -28,10 +28,10 @@ const WeatherCards: React.FC<weatherProps> = ({ city }) => {
   };
 
   const kelvinToCOrF = (kelvin: number, deg: string) => {
-    if (deg == 'C') {
+    if (deg === 'C') {
       return kelvinToCelcius(kelvin);
     }
-    if (deg == 'F') {
+    if (deg === 'F') {
       return kelvinToFahrenheit(kelvin);
     }
   };
@@ -50,7 +50,7 @@ const WeatherCards: React.FC<weatherProps> = ({ city }) => {
     console.log('re-render');
     dispatch(objectWeather(city));
     setIsLoading(false);
-    if (city == 'Kaohsiung') {
+    if (city === 'Kaohsiung') {
       setDeg('C');
     } else {
       setDeg('F');

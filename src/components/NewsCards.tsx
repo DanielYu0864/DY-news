@@ -35,7 +35,7 @@ const NewsCards: React.FC<CardProps> = ({ article, language }) => {
       <Card.Body>
         <Card.Link href={article.url} className='card-link'>
           <i className='fas fa-newspaper'></i>{' '}
-          {language == 'tw' ? '完整報導' : 'News link'}
+          {language === 'tw' ? '完整報導' : 'News link'}
         </Card.Link>
         {/* <a href='#' className='card-link'>
           Read more
