@@ -14,9 +14,9 @@ const Header: React.FC = () => {
   return (
     <Navbar className='navbar navbar-expand-lg navbar-dark bg-primary p-0'>
       <Container className='container-fluid'>
-        <Nav.Link className='navbar-brand' href='/'>
-          DY.
-        </Nav.Link>
+        <Link to='/'>
+          <Nav className='navbar-brand'>DY.</Nav>
+        </Link>
         {/* <button
           className='navbar-toggler'
           type='button'
