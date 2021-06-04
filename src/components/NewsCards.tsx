@@ -22,18 +22,21 @@ const NewsCards: React.FC<CardProps> = ({ article, language }) => {
         <Card.Title style={{ fontWeight: 700 }}>{article.title}</Card.Title>
         <Card.Subtitle className='text-muted'>{article.author}</Card.Subtitle>
       </Card.Body>
-      <Card.Img
-        src={
-          article.urlToImage
-            ? article.urlToImage
-            : 'https://howfix.net/wp-content/uploads/2018/02/sIaRmaFSMfrw8QJIBAa8mA-article.png'
-        }
-      />
+      <Card.Link href={article.url} className='card-link' target='_blank'>
+        <Card.Img
+          src={
+            article.urlToImage
+              ? article.urlToImage
+              : 'https://howfix.net/wp-content/uploads/2018/02/sIaRmaFSMfrw8QJIBAa8mA-article.png'
+          }
+        />
+      </Card.Link>
+
       <Card.Body>
         <Card.Text style={{ fontWeight: 500 }}>{article.description}</Card.Text>
       </Card.Body>
       <Card.Body>
-        <Card.Link href={article.url} className='card-link'>
+        <Card.Link href={article.url} className='card-link' target='_blank'>
           <i className='fas fa-newspaper'></i>{' '}
           {language === 'tw' ? '完整報導' : 'News link'}
         </Card.Link>

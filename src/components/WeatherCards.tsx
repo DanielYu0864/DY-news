@@ -78,14 +78,20 @@ const WeatherCards: React.FC<weatherProps> = ({ city }) => {
   // console.log(weatherData);
   // const weatherData = weather_data;
   return (
-    <Card className='text-white bg-primary h-100'>
-      <InputGroup className='mb-3'>
+    <Card className='text-white bg-primary h-100 weather-card'>
+      <InputGroup className='mb-3' onSubmit={citySearchButtonClickHandler}>
         <FormControl
           placeholder={weatherData?.name}
           aria-label="Recipient's username"
           aria-describedby='basic-addon2'
           className='form-group-lg'
           onChange={(e) => cityInputChangeHandler(e)}
+          onKeyDown={(e: any) => {
+            if (e.keyCode === 13) {
+              //keyCode 13 === 'Enter key'
+              citySearchButtonClickHandler();
+            }
+          }}
         />
         <InputGroup.Append>
           <Button

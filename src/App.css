@@ -14,6 +14,12 @@
   font-size: 50px;
 }
 
+/*  //* weather style**************************************************/
+
+.weather-card {
+  transition: 0.5s ease;
+}
+
 .city-weather-search-btn {
   font-size: 1.5rem;
 }
@@ -25,7 +31,6 @@
 /*//* toggle button in weather
   credit: https://codepen.io/marcusconnor/pen/QJNvMa?editors=1100
 */
-
 .mid {
   position: absolute;
   right: 0rem;
@@ -174,4 +179,23 @@ input:focus + .switch-left + .switch-right {
 
 input:checked:focus + .switch-left + .switch-right {
   color: #333;
+}
+/*end*/
+/* //* news carousel style */
+
+/* .carousel-div:hover .carousel-ul {
+  background-color: rgba(26, 26, 26, 0.6);
+} */
+.carousel-div:hover .carousel-img {
+  opacity: 0.9;
+  background-color: rgba(26, 26, 26, 0.6);
+}
+.carousel-div:hover .carousel-ul p {
+  background-color: rgba(26, 26, 26, 0.6);
+}
+
+.carousel-ul,
+.carousel-ul p,
+.carousel-img {
+  transition: 0.5s ease;
 }
