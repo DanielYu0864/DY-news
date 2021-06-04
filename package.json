@@ -1,6 +1,5 @@
 {
   "name": "frontend",
-  "homepage": "https://danielyu0864.github.io/DY-news/",
   "version": "1.1.0",
   "engines": {
     "node": "14.x"
