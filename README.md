@@ -14,7 +14,7 @@ An app that you can read the US and Taiwan hottest & latest news at the same tim
 
 #### Project Deploy
 
-- Deploy frontend on Github Page: https://danielyu0864.github.io/DY-news/
+- Deploy frontend on firebase: https://dy-news.web.app/
 - Deploy backend server on Heroku: https://github.com/DanielYu0864/dy-news-server
 
 ## Languages
