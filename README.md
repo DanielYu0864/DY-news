@@ -28,7 +28,7 @@ React, TypeScript, Redux
 
 ## Repositories
 
-- Deploy Page: https://danielyu0864.github.io/DY-news/
+- Deploy Page: https://dy-news.web.app/
 - Project Github: https://github.com/DanielYu0864/DY-news
 
 ## Authors
