@@ -16,21 +16,21 @@ import { listNews } from '../actions/newsActions';
 
 const TWNewsPage: React.FC = () => {
   //* get news from redux******************************************************************************
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  const newsList = useSelector((state: any) => state.news);
+  // const newsList = useSelector((state: any) => state.news);
 
-  const { loading, error, data } = newsList;
-  // console.log(data);
-  useEffect(() => {
-    dispatch(listNews('tw'));
-  }, []);
-  const articles = data;
+  // const { loading, error, data } = newsList;
+  // // console.log(data);
+  // useEffect(() => {
+  //   dispatch(listNews('tw'));
+  // }, []);
+  // const articles = data;
   //******************************************************************************************************
-  // const loading = false,
-  //   error = null;
-  // const { articles } = news_data;
-  // console.log(articles);
+  const loading = false,
+    error = null;
+  const { articles } = news_data;
+  console.log(articles);
 
   return (
     <Container className='main-container'>

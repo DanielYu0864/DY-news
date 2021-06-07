@@ -1,26 +1,36 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory, useLocation, useParams } from 'react-router-dom';
 import { Navbar, Nav, Dropdown, Container } from 'react-bootstrap';
+import { newsCategoryChange } from '../actions/newsActions';
 import { categoryList } from '../utils/categoryList';
 
 const CategoryNav: React.FC = () => {
+  const dispatch = useDispatch();
+  const newsCategory = useSelector((state: any) => state.newsCategory);
+
   const history = useHistory();
   const location = useLocation();
   const unit = location.pathname.split('/')[1];
 
+  const params = useParams();
+
   const [category, setCategory] = useState('general');
-  const categoryChooseHandler = (e: any) => {
-    setCategory(e.target.innerHTML);
-    if (unit === 'twnews') {
-      history.push(`/twnews/${category}`);
-    } else {
-      history.push(`${category}`);
-    }
+  const categoryChooseHandler = async (e: any) => {
+    await dispatch(newsCategoryChange(e.target.innerHTML));
+    await setCategory(e.target.innerHTML);
   };
 
   useEffect(() => {
-    console.log(unit);
+    // console.log(newsCategory.data);
+    // console.log(params);
+    // console.log(unit);
     console.log('re-reander category nav: ' + category);
+    if (unit === 'twnews') {
+      history.push(`/twnews/${newsCategory.data}`);
+    } else {
+      history.push(`/usnews/${newsCategory.data}`);
+    }
   }, [category]);
 
   return (
@@ -32,7 +42,7 @@ const CategoryNav: React.FC = () => {
       >
         <Nav as='li' className='nav-item '>
           {categoryList.map((e: string, i: number) =>
-            e == category ? (
+            e == newsCategory.data ? (
               <Nav.Item
                 className='nav-link active'
                 onClick={categoryChooseHandler}
@@ -52,7 +62,7 @@ const CategoryNav: React.FC = () => {
             )
           )}
         </Nav>
-        <Dropdown className='nav-item dropdown'>
+        <Dropdown className='nav-item dropdown' style={{ display: 'none' }}>
           <Dropdown.Toggle
             className='dropdown-toggle'
             data-bs-toggle='dropdown'

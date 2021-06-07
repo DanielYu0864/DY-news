@@ -19,9 +19,10 @@ function App() {
         {categoryList.map((e: any) => (
           <Route path={`/twnews/${e}`} component={TWNewsPage} />
         ))}
-        {categoryList.map((e: any) => (
-          <Route path={`/${e}`} component={MainPage} />
-        ))}
+        {/* {categoryList.map((e: any) => (
+          <Route path={`usnews/${e}`} component={MainPage} />
+        ))} */}
+        <Route path={`/usnews/:category`} component={MainPage} />
         <Route path='/' component={MainPage} exact />
       </main>
       <Footer />

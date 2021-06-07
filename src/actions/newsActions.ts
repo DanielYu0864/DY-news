@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { Dispatch } from 'redux';
-import { NewsListAction } from '../constants/newsConstants';
+import { NewsListAction, NewsCategoryAction } from '../constants/newsConstants';
 import { NewsActionType } from '../api/newsapiActionType';
 
 export const listNews =
@@ -26,4 +26,13 @@ export const listNews =
         payload: error.message,
       });
     }
+  };
+
+export const newsCategoryChange =
+  (category: any = 'general') =>
+  async (dispatch: Dispatch<any>) => {
+    dispatch({
+      type: NewsCategoryAction.NEWS_CATEGORY_REQUEST_SUCCESS,
+      payload: category,
+    });
   };

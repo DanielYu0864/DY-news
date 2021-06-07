@@ -17,8 +17,9 @@ import { listNews } from '../actions/newsActions';
 
 const MainPage: React.FC = () => {
   const location = useLocation();
-  const category = location.pathname.split('/')[1];
-  //* get news from redux******************************************************************************
+  const category = location.pathname;
+  const newsCategory = useSelector((state: any) => state.newsCategory);
+  // //* get news from redux******************************************************************************
   const dispatch = useDispatch();
 
   const newsList = useSelector((state: any) => state.news);
@@ -26,8 +27,13 @@ const MainPage: React.FC = () => {
   const { loading, error, data } = newsList;
   // console.log(data);
   useEffect(() => {
-    dispatch(listNews('us', category));
+    dispatch(listNews('us', newsCategory.data));
+    console.log('re-reander main page');
   }, []);
+  useEffect(() => {
+    dispatch(listNews('us', newsCategory.data));
+    console.log('re-reander main page');
+  }, [location.pathname]);
   const articles = data;
   //******************************************************************************************************
   // const loading = false,
@@ -35,6 +41,7 @@ const MainPage: React.FC = () => {
   // const { articles } = news_data;
   // console.log(articles);
   // console.log(category);
+  // console.log(newsCategory.data);
 
   return (
     <Container className='main-container mt-3'>

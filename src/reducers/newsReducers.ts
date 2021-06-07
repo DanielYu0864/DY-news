@@ -1,7 +1,7 @@
 import { NewsListAction } from '../constants/newsConstants';
 import { NewsActionType } from '../api/newsapiActionType';
 
-interface newsState {
+interface NewsState {
   loading: boolean;
   error: string | null;
   data: string[];
@@ -15,7 +15,7 @@ const initialState = {
 };
 
 export const newsReducer = (
-  state: newsState = initialState,
+  state: NewsState = initialState,
   action: NewsActionType
 ) => {
   switch (action.type) {
