@@ -10,12 +10,14 @@ type HeaderProps = {
 
 const Header: React.FC = () => {
   const location = useLocation();
-  console.log(location.pathname);
+  // console.log(location.pathname);
   return (
     <Navbar className='navbar navbar-expand-lg navbar-dark bg-primary p-0'>
-      <Container className='container-fluid'>
+      <Container className='container-fluid pl-3'>
         <Link to='/'>
-          <Nav className='navbar-brand'>DY.</Nav>
+          <Nav className='navbar-brand' style={{ fontWeight: 400 }}>
+            DY.
+          </Nav>
         </Link>
         {/* <button
           className='navbar-toggler'
@@ -30,7 +32,7 @@ const Header: React.FC = () => {
         </button> */}
 
         <div className='collapse navbar-collapse' id='navbarColor01'>
-          {location.pathname === '/twnews' ? (
+          {location.pathname.split('/')[1] === 'twnews' ? (
             <Nav className='navbar-nav me-auto' activeKey={location.pathname}>
               <Link to='/'>
                 <Nav.Item className='nav-link'>US Hot</Nav.Item>

@@ -15,8 +15,8 @@ const WeatherCards: React.FC<weatherProps> = ({ city }) => {
   const [cityInput, setCityInput] = useState<string>('');
   const [deg, setDeg] = useState('K');
 
-  const data = useSelector((state: any) => state.weather);
-  const { loading, error, weatherData } = data;
+  // const data = useSelector((state: any) => state.weather);
+  // const { loading, error, weatherData } = data;
 
   const kelvinToCelcius = (kelvin: number) => {
     const celcius = Math.round(kelvin - 273.15);
@@ -56,7 +56,7 @@ const WeatherCards: React.FC<weatherProps> = ({ city }) => {
 
   useEffect(() => {
     console.log('re-render');
-    dispatch(objectWeather(city));
+    // dispatch(objectWeather(city));
     setIsLoading(false);
     if (city === 'Kaohsiung') {
       setDeg('C');
@@ -65,18 +65,17 @@ const WeatherCards: React.FC<weatherProps> = ({ city }) => {
     }
   }, []);
 
-  if (loading || error) {
-    // console.log(loading);
-    // console.log(error);
-    return <div>Loading..</div>;
-  }
+  // if (loading || error) {
+  //   // console.log(loading);
+  //   // console.log(error);
+  //   return <div>Loading..</div>;
+  // }
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
+  // if (isLoading) {
+  //   return <div>Loading...</div>;
+  // }
 
-  // console.log(weatherData);
-  // const weatherData = weather_data;
+  const weatherData = weather_data;
   return (
     <Card className='text-white bg-primary h-100 weather-card'>
       <InputGroup className='mb-3' onSubmit={citySearchButtonClickHandler}>

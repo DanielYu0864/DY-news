@@ -5,8 +5,10 @@
 ## PART 2: bug fixing, user experience, and database setup
 
 - [ ] CLIENT: news detail page (or pop up box)
-- [ ] BACKEND: database to contain news (mongodb | firebase)
-- [ ] BACKEND: get req from newsapi every 1 hours & save into database
+- [ ] DATABASE
+  - [ ] BACKEND: get news request from database not newsapi
+  - [ ] BACKEND: database to contain news (mongodb | firebase)
+  - [ ] BACKEND: get req from newsapi every 1 hours & save into database
 
 ## PART 3: sort news by date & time in database
 
@@ -30,9 +32,11 @@
 
 ## PART 2: bug fixing, user experience, and database setup
 
+- [ ] style: logo padding fix
 - [ ] CLIENT: news category
+  - [ ] UPDATE: display news by category in news page
   - [ ] component: category navbar
-  - [ ] style: category navbar
+  - [ ] style: category navbar (maybe only show when hover)
 
 ## PART 1: app structure basic setup ✓
 
@@ -58,7 +62,7 @@
   - [x] store setup
 - [x] CLIENT: footer
 - [x] CLIENT: header
-- [x] CLIENT: news page
+- [x] CLIENT: TW news page
 - [x] CLIENT: US news page
 - [x] CLIENT: news cards
 - [x] CLIENT: weather cards

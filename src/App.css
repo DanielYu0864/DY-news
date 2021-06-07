@@ -14,6 +14,15 @@
   font-size: 50px;
 }
 
+/*  //* category navbar style ******************************************/
+.nav-pills .nav-item:active {
+  color: #eee;
+}
+
+.nav-pills .nav-item {
+  cursor: pointer;
+}
+
 /*  //* weather style**************************************************/
 
 .weather-card {

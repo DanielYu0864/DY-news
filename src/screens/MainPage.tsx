@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 import {
   Container,
   Col,
@@ -15,6 +16,8 @@ import { news_data } from '../data';
 import { listNews } from '../actions/newsActions';
 
 const MainPage: React.FC = () => {
+  const location = useLocation();
+  const category = location.pathname.split('/')[1];
   //* get news from redux******************************************************************************
   const dispatch = useDispatch();
 
@@ -23,7 +26,7 @@ const MainPage: React.FC = () => {
   const { loading, error, data } = newsList;
   // console.log(data);
   useEffect(() => {
-    dispatch(listNews());
+    dispatch(listNews('us', category));
   }, []);
   const articles = data;
   //******************************************************************************************************
@@ -31,10 +34,11 @@ const MainPage: React.FC = () => {
   //   error = null;
   // const { articles } = news_data;
   // console.log(articles);
+  // console.log(category);
 
   return (
-    <Container className='main-container'>
-      <Row className='mb-5 align-items-center'>
+    <Container className='main-container mt-3'>
+      <Row className='mb-3 align-items-center'>
         <Col xs={12} sm={12} md={4}>
           <WeatherCards city='Seattle' />
         </Col>

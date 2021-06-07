@@ -34,7 +34,7 @@ const TWNewsPage: React.FC = () => {
 
   return (
     <Container className='main-container'>
-      <Row className='mb-5 align-items-center'>
+      <Row className='mb-3 align-items-center'>
         <Col xs={12} sm={12} md={4}>
           <WeatherCards city='Kaohsiung' />
         </Col>
