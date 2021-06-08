@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useLocation, useParams } from 'react-router-dom';
 import { Navbar, Nav, Dropdown, Container } from 'react-bootstrap';
 import { newsCategoryChange } from '../actions/newsActions';
-import { categoryList } from '../utils/categoryList';
+import { categoryList, categoryListTW } from '../utils/categoryList';
 
 const CategoryNav: React.FC = () => {
   const dispatch = useDispatch();
@@ -11,22 +11,33 @@ const CategoryNav: React.FC = () => {
 
   const history = useHistory();
   const location = useLocation();
-  const unit = location.pathname.split('/')[1];
-
-  const params = useParams();
-
+  const country = location.pathname.split('/')[1];
   const [category, setCategory] = useState('general');
+
+  const ChineseTranslater = (category: string) => {
+    let index = 0;
+    categoryListTW.map((ele, i) => {
+      if (ele === category) return (index = i);
+    });
+
+    return categoryList[index];
+  };
+
   const categoryChooseHandler = async (e: any) => {
-    await dispatch(newsCategoryChange(e.target.innerHTML));
-    await setCategory(e.target.innerHTML);
+    if (country === 'twnews') {
+      let translate = ChineseTranslater(e.target.innerHTML);
+      await dispatch(newsCategoryChange(translate));
+      await setCategory(translate);
+    } else {
+      await dispatch(newsCategoryChange(e.target.innerHTML.toLowerCase()));
+      await setCategory(e.target.innerHTML.toLowerCase());
+    }
   };
 
   useEffect(() => {
     // console.log(newsCategory.data);
-    // console.log(params);
-    // console.log(unit);
     console.log('re-reander category nav: ' + category);
-    if (unit === 'twnews') {
+    if (country === 'twnews') {
       history.push(`/twnews/${newsCategory.data}`);
     } else {
       history.push(`/usnews/${newsCategory.data}`);
@@ -40,7 +51,7 @@ const CategoryNav: React.FC = () => {
         expand='sm'
         style={{ fontSize: '1rem' }}
       >
-        <Nav as='li' className='nav-item '>
+        <Nav as='li' className='nav-item big-navber'>
           {categoryList.map((e: string, i: number) =>
             e == newsCategory.data ? (
               <Nav.Item
@@ -49,7 +60,7 @@ const CategoryNav: React.FC = () => {
                 style={{ color: 'white' }}
                 key={i}
               >
-                {e}
+                {country === 'twnews' ? categoryListTW[i] : e}
               </Nav.Item>
             ) : (
               <Nav.Item
@@ -57,52 +68,46 @@ const CategoryNav: React.FC = () => {
                 onClick={categoryChooseHandler}
                 key={i}
               >
-                {e}
+                {country === 'twnews' ? categoryListTW[i] : e}
               </Nav.Item>
             )
           )}
         </Nav>
-        <Dropdown className='nav-item dropdown' style={{ display: 'none' }}>
+        <Dropdown className='nav-item dropleft nav-dropdown-toggle'>
           <Dropdown.Toggle
-            className='dropdown-toggle'
+            className='pb-0'
+            bsPrefix='p-2'
             data-bs-toggle='dropdown'
             role='button'
             aria-haspopup='true'
             aria-expanded='false'
           >
-            Category
+            <i className='fas fa-bars' style={{ fontSize: '2rem' }}></i>
           </Dropdown.Toggle>
           <Dropdown.Menu className='dropdown-menu'>
             {categoryList.map((e: string, i: any) =>
               e == category ? (
-                <Dropdown.Item className='nav-link active'>
+                <Dropdown.Item
+                  className='nav-link active'
+                  onClick={categoryChooseHandler}
+                >
                   <Dropdown.ItemText style={{ color: 'white' }} key={i}>
-                    {e.toUpperCase()}
+                    {country === 'twnews' ? categoryListTW[i] : e.toUpperCase()}
                   </Dropdown.ItemText>
                 </Dropdown.Item>
               ) : (
                 <Dropdown.Item
                   className='nav-link'
+                  onClick={categoryChooseHandler}
                   style={{ backgroundColor: 'white' }}
                   key={i}
                 >
-                  <Dropdown.ItemText>{e.toUpperCase()}</Dropdown.ItemText>
+                  <Dropdown.ItemText>
+                    {country === 'twnews' ? categoryListTW[i] : e.toUpperCase()}
+                  </Dropdown.ItemText>
                 </Dropdown.Item>
               )
             )}
-            {/* <a className='dropdown-item' href='#'>
-            Action
-          </a>
-          <a className='dropdown-item' href='#'>
-            Another action
-          </a>
-          <a className='dropdown-item' href='#'>
-            Something else here
-          </a>
-          <div className='dropdown-divider'></div>
-          <a className='dropdown-item' href='#'>
-            Separated link
-          </a> */}
           </Dropdown.Menu>
         </Dropdown>
       </Navbar>

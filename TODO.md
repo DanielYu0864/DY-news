@@ -37,6 +37,8 @@
   - [ ] UPDATE: display news by category in news page
   - [ ] component: category navbar
   - [ ] style: category navbar (maybe only show when hover)
+    - [x] style: category navbar for pc screen
+    - [ ] style: category navbar for phone screen
 
 ## PART 1: app structure basic setup ✓
 

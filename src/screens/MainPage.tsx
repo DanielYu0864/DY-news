@@ -17,7 +17,6 @@ import { listNews } from '../actions/newsActions';
 
 const MainPage: React.FC = () => {
   const location = useLocation();
-  const category = location.pathname;
   const newsCategory = useSelector((state: any) => state.newsCategory);
   // //* get news from redux******************************************************************************
   const dispatch = useDispatch();
@@ -40,7 +39,6 @@ const MainPage: React.FC = () => {
   //   error = null;
   // const { articles } = news_data;
   // console.log(articles);
-  // console.log(category);
   // console.log(newsCategory.data);
 
   return (
