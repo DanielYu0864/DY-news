@@ -16,12 +16,13 @@ function App() {
       <CategoryNav />
       <main>
         <Route path='/twnews' component={TWNewsPage} />
-        {categoryList.map((e: any) => (
+        {/* {categoryList.map((e: any) => (
           <Route path={`/twnews/${e}`} component={TWNewsPage} />
-        ))}
+        ))} */}
         {/* {categoryList.map((e: any) => (
           <Route path={`usnews/${e}`} component={MainPage} />
         ))} */}
+        <Route path={`/twnews/:category`} component={TWNewsPage} />
         <Route path={`/usnews/:category`} component={MainPage} />
         <Route path='/' component={MainPage} exact />
       </main>
