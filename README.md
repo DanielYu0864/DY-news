@@ -6,7 +6,11 @@
 
 #### On Phone
 
-![phonescreen](./image/phonescreenshot.png)
+![phonescreen](./image/phonescreenshot.png) ![phonescreen](./image/phonescreenshot2.png)
+
+### Taiwan News
+
+![tw_page](./image/tw-hot-screenshot.png)
 
 ## Description
 
