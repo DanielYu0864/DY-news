@@ -15,7 +15,6 @@ function App() {
       <Header />
       <CategoryNav />
       <main>
-        <Route path='/twnews' component={TWNewsPage} />
         {/* {categoryList.map((e: any) => (
           <Route path={`/twnews/${e}`} component={TWNewsPage} />
         ))} */}
@@ -24,6 +23,7 @@ function App() {
         ))} */}
         <Route path={`/twnews/:category`} component={TWNewsPage} />
         <Route path={`/usnews/:category`} component={MainPage} />
+        <Route path='/twnews' component={TWNewsPage} exact />
         <Route path='/' component={MainPage} exact />
       </main>
       <Footer />
