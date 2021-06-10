@@ -76,6 +76,40 @@ const WeatherCards: React.FC<weatherProps> = ({ city }) => {
   }
 
   // const weatherData = weather_data;
+
+  if (weatherData?.cod === '404') {
+    return (
+      <Card className='text-white bg-primary h-100 weather-card'>
+        <InputGroup className='mb-3' onSubmit={citySearchButtonClickHandler}>
+          <FormControl
+            placeholder={weatherData?.name}
+            aria-label="Recipient's username"
+            aria-describedby='basic-addon2'
+            className='form-group-lg'
+            onChange={(e) => cityInputChangeHandler(e)}
+            onKeyDown={(e: any) => {
+              if (e.keyCode === 13) {
+                //keyCode 13 === 'Enter key'
+                citySearchButtonClickHandler();
+              }
+            }}
+          />
+          <InputGroup.Append>
+            <Button
+              variant='outline-secondary p-2 d-flex justify-content-center align-items-center'
+              onClick={citySearchButtonClickHandler}
+            >
+              <i className='city-weather-search-btn fas fa-search-location'></i>
+            </Button>
+          </InputGroup.Append>
+        </InputGroup>
+
+        <Card.Header style={{ fontSize: '1.6rem' }} className='text-center'>
+          {weatherData?.message}
+        </Card.Header>
+      </Card>
+    );
+  }
   return (
     <Card className='text-white bg-primary h-100 weather-card'>
       <InputGroup className='mb-3' onSubmit={citySearchButtonClickHandler}>
@@ -154,7 +188,7 @@ const WeatherCards: React.FC<weatherProps> = ({ city }) => {
           <Card.Img
             as={Image}
             className='w-50'
-            src={`http://openweathermap.org/img/wn/${weatherData?.weather[0].icon}.png`}
+            src={`http://openweathermap.org/img/wn/${weatherData?.weather[0].icon}@4x.png`}
             fluid={true}
             alt={weatherData?.weather[0].description}
           />

@@ -51,7 +51,11 @@ export const weatherReducer = (
     case WeatherAction.WEATHER_REQUEST_SUCCESS:
       return { loading: false, error: null, weatherData: action.payload };
     case WeatherAction.WEATHER_REQUEST_FAIL:
-      return { loading: false, error: action.payload, weatherData: [] };
+      return {
+        loading: false,
+        error: action.payload,
+        weatherData: [],
+      };
     default:
       return state;
   }
