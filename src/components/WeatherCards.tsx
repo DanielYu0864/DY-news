@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Card, Image, InputGroup, FormControl, Button } from 'react-bootstrap';
@@ -43,7 +42,9 @@ const WeatherCards: React.FC<weatherProps> = ({ city }) => {
 
   const citySearchButtonClickHandler = () => {
     // console.log(cityInput);
-    dispatch(objectWeather(cityInput));
+    if (cityInput !== '') {
+      dispatch(objectWeather(cityInput));
+    }
   };
 
   const degreeChangeFtoC = () => {
