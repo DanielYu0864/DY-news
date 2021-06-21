@@ -12,7 +12,7 @@ const WeatherCards: React.FC<weatherProps> = ({ city }) => {
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [cityInput, setCityInput] = useState<string>('');
-  const [deg, setDeg] = useState('K');
+  const [deg, setDeg] = useState('F');
 
   const data = useSelector((state: any) => state.weather);
   const { loading, error, weatherData } = data;
@@ -64,32 +64,35 @@ const WeatherCards: React.FC<weatherProps> = ({ city }) => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
-          console.log({ lat: position.coords.latitude });
+          console.log({
+            lat: position.coords.latitude,
+            lon: position.coords.longitude,
+          });
           dispatch(objectWeatherWithCrd(position.coords));
+          setIsLoading(false);
         },
         (err) => {
           console.log({ errorMessage: err.message });
-          dispatch(objectWeather(city));
+          dispatch(objectWeather('Seattle'));
           setDeg('F');
           setIsLoading(false);
         }
       );
     }
-    if (!weatherData?.weather) {
+    if (weatherData?.weather.length === 0) {
       if (city === 'Kaohsiung') {
         // dispatch(objectWeather(city, 'zh_tw'));
-        dispatch(objectWeather(city));
+        dispatch(objectWeather('Kaohsiung'));
         setDeg('C');
       } else {
-        dispatch(objectWeather(city));
+        dispatch(objectWeather('Seattle'));
         setDeg('F');
       }
     }
-    if (!geolocationLoading) {
-      console.log(weatherData);
-      setIsLoading(false);
-    }
-  }, [geolocationLoading]);
+    console.log(geolocationLoading);
+  }, []);
+
+  // useEffect(() => {}, [geolocationLoading === true]);
 
   if (loading || error) {
     // console.log(loading);

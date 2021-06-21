@@ -25,14 +25,14 @@ const MainPage: React.FC = () => {
   const newsList = useSelector((state: any) => state.news);
 
   const { loading, error, data } = newsList;
-  // console.log(data);
-  // useEffect(() => {
-  //   dispatch(listNews('us', newsCategory.data));
-  //   if (navigator.geolocation) {
-  //     dispatch(getGeolocation());
-  //   }
-  //   console.log('re-reander main page');
-  // }, []);
+  console.log(data);
+  useEffect(() => {
+    dispatch(listNews('us', newsCategory.data));
+    if (navigator.geolocation) {
+      dispatch(getGeolocation());
+    }
+    console.log('re-reander main page');
+  }, []);
   useEffect(() => {
     dispatch(listNews('us', newsCategory.data));
     if (navigator.geolocation) {
