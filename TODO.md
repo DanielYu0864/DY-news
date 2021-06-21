@@ -25,8 +25,11 @@
 
 ## other
 
-- [ ] styling weather card
+- [ ] chinese version
+- [x] styling weather card
 - [ ] update readme file
+- [x] get user location when page load (refactor)
+- [ ] add language options button and version
 
 ## PART 3
 

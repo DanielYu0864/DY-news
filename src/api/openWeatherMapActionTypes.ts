@@ -1,4 +1,7 @@
-import { WeatherAction } from '../constants/weatherConstants';
+import {
+  WeatherAction,
+  GeolocationAction,
+} from '../constants/weatherConstants';
 
 export interface IWeatherData {
   weather: {
@@ -43,3 +46,20 @@ export type WeatherActionType =
   | WeatherRequest
   | WeatherRequestSuccess
   | WeatherRequestFail;
+
+interface GeolocationRequest {
+  type: GeolocationAction.GEOLOCATION_REQUEST;
+}
+interface GeolocationRequestSuccess {
+  type: GeolocationAction.GEOLOCATION_REQUEST_SUCCESS;
+  payload: any;
+}
+interface GeolocationRequestFail {
+  type: GeolocationAction.GEOLOCATION_REQUEST_FAIL;
+  payload: string;
+}
+
+export type GeolocationActionType =
+  | GeolocationRequest
+  | GeolocationRequestSuccess
+  | GeolocationRequestFail;

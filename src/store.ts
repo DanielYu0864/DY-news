@@ -3,13 +3,14 @@ import thunk from 'redux-thunk';
 import { newsReducer } from './reducers/newsReducers';
 import { newsCategoryReducer } from './reducers/newsCategoryReducer';
 import { weatherReducer } from './reducers/weatherReducer';
-
+import { geolocationReducer } from './reducers/geolocationReducer';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 const reducer = combineReducers({
   news: newsReducer,
   weather: weatherReducer,
   newsCategory: newsCategoryReducer,
+  geolocation: geolocationReducer,
 });
 
 const initialState = {};

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Card, Image, InputGroup, FormControl, Button } from 'react-bootstrap';
 import { weather_data } from '../data';
-import { objectWeather } from '../actions/weatherActions';
+import { objectWeather, objectWeatherWithCrd } from '../actions/weatherActions';
 
 interface weatherProps {
   city?: string;
@@ -16,6 +16,10 @@ const WeatherCards: React.FC<weatherProps> = ({ city }) => {
 
   const data = useSelector((state: any) => state.weather);
   const { loading, error, weatherData } = data;
+  const { data: geolocationData, loading: geolocationLoading } = useSelector(
+    (state: any) => state.geolocation
+  );
+  const { latitude, longitude } = geolocationData;
 
   const kelvinToCelcius = (kelvin: number) => {
     const celcius = Math.round(kelvin - 273.15);
@@ -57,14 +61,35 @@ const WeatherCards: React.FC<weatherProps> = ({ city }) => {
 
   useEffect(() => {
     console.log('re-render weather card');
-    dispatch(objectWeather(city));
-    setIsLoading(false);
-    if (city === 'Kaohsiung') {
-      setDeg('C');
-    } else {
-      setDeg('F');
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          console.log({ lat: position.coords.latitude });
+          dispatch(objectWeatherWithCrd(position.coords));
+        },
+        (err) => {
+          console.log({ errorMessage: err.message });
+          dispatch(objectWeather(city));
+          setDeg('F');
+          setIsLoading(false);
+        }
+      );
     }
-  }, []);
+    if (!weatherData?.weather) {
+      if (city === 'Kaohsiung') {
+        // dispatch(objectWeather(city, 'zh_tw'));
+        dispatch(objectWeather(city));
+        setDeg('C');
+      } else {
+        dispatch(objectWeather(city));
+        setDeg('F');
+      }
+    }
+    if (!geolocationLoading) {
+      console.log(weatherData);
+      setIsLoading(false);
+    }
+  }, [geolocationLoading]);
 
   if (loading || error) {
     // console.log(loading);
@@ -139,7 +164,7 @@ const WeatherCards: React.FC<weatherProps> = ({ city }) => {
       <Card.Header>{weatherData?.name} Today's Weather</Card.Header>
       <Card.Body className='w-100'>
         <Card.Title style={{ fontSize: '1.6rem' }} className='text-center'>
-          {weatherData?.weather[0].main}
+          {(weatherData?.weather[0].description).toUpperCase()}
         </Card.Title>
         <Card.Body
           className='d-flex justify-content-around align-items-center p-0'

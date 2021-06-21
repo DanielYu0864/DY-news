@@ -12,6 +12,7 @@ import {
 import NewsCards from '../components/NewsCards';
 import NewsCarousels from '../components/NewsCarousels';
 import WeatherCards from '../components/WeatherCards';
+import { getGeolocation } from '../actions/weatherActions';
 import { news_data } from '../data';
 import { listNews } from '../actions/newsActions';
 
@@ -25,12 +26,18 @@ const MainPage: React.FC = () => {
 
   const { loading, error, data } = newsList;
   // console.log(data);
+  // useEffect(() => {
+  //   dispatch(listNews('us', newsCategory.data));
+  //   if (navigator.geolocation) {
+  //     dispatch(getGeolocation());
+  //   }
+  //   console.log('re-reander main page');
+  // }, []);
   useEffect(() => {
     dispatch(listNews('us', newsCategory.data));
-    console.log('re-reander main page');
-  }, []);
-  useEffect(() => {
-    dispatch(listNews('us', newsCategory.data));
+    if (navigator.geolocation) {
+      dispatch(getGeolocation());
+    }
     console.log('re-reander main page');
   }, [location.pathname]);
   const articles = data;
@@ -41,11 +48,17 @@ const MainPage: React.FC = () => {
   // console.log(articles);
   // console.log(newsCategory.data);
 
+  // useEffect(() => {
+  //   if (navigator.geolocation) {
+  //     dispatch(getGeolocation());
+  //   }
+  // }, []);
+
   return (
     <Container className='main-container mt-3'>
       <Row className='mb-3 align-items-center'>
         <Col xs={12} sm={12} md={4}>
-          <WeatherCards city='Seattle' />
+          <WeatherCards />
         </Col>
         <Col xs={12} sm={12} md={8}>
           {!loading && !error && (
